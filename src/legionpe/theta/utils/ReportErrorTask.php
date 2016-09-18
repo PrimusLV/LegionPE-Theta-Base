@@ -43,7 +43,8 @@ class ReportErrorTask extends AsyncTask{
 		$lines[] = "File: " . $this->exFile . "#" . $this->exLine;
 		$lines[] = "When: " . $this->when;
 		$lines[] = "Time: ".date("H:i:s", time());
-		$lines[] = "Server: ".Settings::$LOCALIZE_IP . " " . Settings::$LOCALIZE_PORT." (".Settings::$LOCALIZE_ID.")";
+		$lines[] = "In the server below: ";
+		Utils::getURL(Credentials::IRC_WEBHOOK_NOPREFIX . urlencode("BotsHateNames: status " . Settings::$LOCALIZE_IP . " " . Settings::$LOCALIZE_PORT));
 		$lines[] = "=== END ERROR ===";
 		foreach($lines as $line) self::log($line);
 		self::$last0 = self::$last1;
